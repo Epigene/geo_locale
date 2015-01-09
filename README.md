@@ -19,12 +19,17 @@ Or install it yourself as:
     $ gem install geo_locale
 
 ## Usage
-
-TODO: Write usage instructions here
+Configure default locales
+```ruby
+GeoLocale.configure do |config|
+  config.dev_country = "fr"
+  config.local_country = "de"
+end
+```
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/geo_locale/fork )
+1. Fork it ( https://github.com/Epigene/geo_locale/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
