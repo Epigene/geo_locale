@@ -6,6 +6,8 @@ require 'geo_locale/version'
 Gem::Specification.new do |spec|
   spec.name          = "geo_locale"
   spec.version       = GeoLocale::VERSION
+  spec.date          = Date.today.to_s
+  spec.platform      = Gem::Platform::RUBY
   spec.authors       = ["Epigene"]
   spec.email         = ["augusts.bautra@gmail.com"]
   spec.summary       = ['A Rails 4+ gem for getting user country']
@@ -21,4 +23,10 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.7"
   spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency 'rspec'
+
+  #spec.add_dependency "rest-client"
+  #spec.add_dependency "activesupport"
+  spec.add_dependency 'geoip'
+  spec.add_dependency 'i18n'
 end
