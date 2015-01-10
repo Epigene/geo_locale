@@ -24,7 +24,13 @@ Configure default locales
 GeoLocale.configure do |config|
   config.dev_country = "fr"
   config.local_country = "de"
+  config.overrides["ee"] = "et" # hash used to override standard country codes
 end
+```
+GeoLocale.country_code(ip), where ip is a string like "12.12.12.12"
+Use in controller like so:
+```ruby
+GeoLocale.country_code(request.remote_ip)
 ```
 
 ## Contributing

@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "geo_locale"
   spec.version       = GeoLocale::VERSION
   spec.date          = Date.today.to_s
-  spec.platform      = Gem::Platform::RUBY
+  #spec.platform      = Gem::Platform::RUBY
   spec.authors       = ["Epigene"]
   spec.email         = ["augusts.bautra@gmail.com"]
   spec.summary       = ['A Rails 4+ gem for getting user country']
@@ -19,15 +19,14 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
-  #s.rubyforge_project = "ga_collector_pusher"
+  spec.rubyforge_project = "geo_locale"
 
-  spec.add_development_dependency "bundler", "~> 1.7"
+  spec.add_development_dependency "bundler", "~> 1.7.0"
   spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency 'rspec'
-  spec.add_development_dependency 'rails'
+  spec.add_development_dependency 'rspec', "~> 3.1.0"
 
-  #spec.add_dependency "rest-client"
-  #spec.add_dependency "activesupport"
   spec.add_dependency 'geoip'
-  spec.add_dependency 'i18n'
+  spec.add_dependency 'geokit'
+  spec.add_dependency 'geokit-rails'
+
 end
