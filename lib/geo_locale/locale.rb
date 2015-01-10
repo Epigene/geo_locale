@@ -1,6 +1,6 @@
 module GeoLocale
 
-  def self.locale (country_code: "", ip: "", lcid: false)
+  def self.locale (ip: "", country_code: "", lcid: false)
     if country_code.present?
       puts "got code"
       unless lcid
@@ -11,7 +11,7 @@ module GeoLocale
 
     elsif ip.present?
       puts "got ip!"
-      country_code = GeoLocale.country_code(ip)
+      country_code = GeoLocale.country_code(ip: ip)
       unless lcid
         return GeoLocale::LOCALE[country_code]
       else

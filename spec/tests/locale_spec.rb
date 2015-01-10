@@ -55,7 +55,7 @@ describe "Locale interpret" do
         expect( GeoLocale.locale(ip: "97.77.25.20") ).to eq "en"
       end
       it 'should return en-ie for ip: "54.170.245.171", lcid: true' do
-        expect( GeoLocale.locale(ip: "54.170.245.171", lcid: true) ).to eq "en-gb"
+        expect( GeoLocale.locale(ip: "54.170.245.171", lcid: true) ).to eq "en-ie"
       end
     end
     context "with customized config" do
