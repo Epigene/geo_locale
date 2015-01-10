@@ -1,7 +1,8 @@
 module GeoLocale
 
-  def self.locale country_code: "", ip: "", lcid: false
+  def self.locale (country_code: "", ip: "", lcid: false)
     if country_code.present?
+      puts "got code"
       unless lcid
         return GeoLocale::LOCALE[country_code]
       else
@@ -9,17 +10,20 @@ module GeoLocale
       end
 
     elsif ip.present?
+      puts "got ip!"
       country_code = GeoLocale.country_code(ip)
       unless lcid
         return GeoLocale::LOCALE[country_code]
       else
         return GeoLocale::LCID[country_code]
       end
+
     else
+      puts "got nutin"
       unless lcid
-        return GeoLocale::LOCALE[GeoLocale.config.local_country]
+        return GeoLocale::LOCALE["#{GeoLocale.config.default_country}"]
       else
-        return GeoLocale::LCID[GeoLocale.config.local_country]
+        return GeoLocale::LCID["#{GeoLocale.config.default_country}"]
       end
     end
   end
@@ -33,7 +37,8 @@ module GeoLocale
     "gb" => "en", # UK a.k.a Great Britain
     "uk" => "en", # fallback England
     "us" => "en", # US&A
-    "pl" => "pl"
+    "pl" => "pl",
+    "de" => "de"
   }
 
   LCID = {
@@ -45,7 +50,8 @@ module GeoLocale
     "gb" => "en-gb", # UK a.k.a Great Britain
     "uk" => "en-gb", # fallback England
     "us" => "en-us", # US&A
-    "pl" => "pl"
+    "pl" => "pl",
+    "de" => "de"
   }
 
 end

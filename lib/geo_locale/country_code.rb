@@ -11,12 +11,12 @@ module GeoLocale
         return country_code
       else
         # final fallback, config default
-        return GeoLocale.config.local_country
+        return GeoLocale.config.default_country
       end
     end
   end
 
-  def self.geo_ip_try (ip) # ip = "12.12.12.12"
+  def self.geo_ip_try (ip)
     begin
       return nil unless ip.match(GeoLocale::IP_REGEX).present?
       code = GeoIP.new("#{GeoLocale::ROOT}/lib/data/GeoIP.dat").country(ip).country_code2.downcase
@@ -29,13 +29,12 @@ module GeoLocale
           return code
         end
       end
-      #return GeoIP.new("#{GeoLocale::ROOT}/lib/data/GeoIP.dat").country(request.remote_ip).country_code2.downcase
     rescue
       nil
     end
   end
 
-  def self.geokit_try (ip) # ip = "12.12.12.12"
+  def self.geokit_try (ip)
     return nil unless ip.match(GeoLocale::IP_REGEX).present?
     begin
       return Geokit::Geocoders::MultiGeocoder.geocode(ip).country_code.downcase
