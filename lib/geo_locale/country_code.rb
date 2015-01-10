@@ -1,7 +1,7 @@
 module GeoLocale
   IP_REGEX = /\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b/
 
-  def self.country_code (ip) # ip = "12.12.12.12"
+  def self.country_code (ip: "") # ip = "12.12.12.12"
     country_code = GeoLocale.geo_ip_try(ip)
     if country_code.present?
       return country_code

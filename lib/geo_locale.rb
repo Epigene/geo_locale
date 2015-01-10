@@ -8,8 +8,6 @@ require 'geokit-rails'
 module GeoLocale
   class << self
     attr_accessor :config
-
-
   end
 
   def self.configure
