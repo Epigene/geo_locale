@@ -61,9 +61,12 @@ GeoLocale.locale(ip: "97.77.25.20", country_code: "lv")
 => "lv"
 ```
 
-## Contributing
+## TO-DO
 
-Main priority is extending the country_code => locale hash in lib/geo_locale/locale.rb
+1. Extend the country_code => locale hash in lib/geo_locale/locale.rb
+2. Open the hash to configuration overrides
+
+## Contributing
 
 1. Fork it ( https://github.com/Epigene/geo_locale/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
