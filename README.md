@@ -34,17 +34,17 @@ end
 
 To get country code:
 
-GeoLocale.country_code(ip: "")
+def self.country_code (ip: "")
 
 Use in controller like so:
 ```ruby
-GeoLocale.country_code(request.remote_ip)
+GeoLocale.country_code(ip: request.remote_ip)
 => "en"
 ```
 
 To get locale:
 
-GeoLocale.locale(country_code: "", ip: "", lcid: false)
+def self.locale (ip: "", country_code: "", lcid: false)
 ```ruby
 GeoLocale.locale(country_code: "gb")
 => "en"
@@ -62,6 +62,8 @@ GeoLocale.locale(ip: "97.77.25.20", country_code: "lv")
 ```
 
 ## Contributing
+
+Main priority is extending the country_code => locale hash in lib/geo_locale/locale.rb
 
 1. Fork it ( https://github.com/Epigene/geo_locale/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
