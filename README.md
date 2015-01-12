@@ -4,6 +4,10 @@ Simple wrapper for GeoIP gem with some redundancy on GeoKit to get a two-letter 
 
 Basic use-case: Detect application user's origin and display app in that language.
 
+## Requirements
+
+Ruby 2.0.0 and greater
+
 ## Installation
 
 Add this line to your application's Gemfile:
