@@ -26,6 +26,8 @@ Configure default locales
 # in /config/initializers/geo_locale.rb
 GeoLocale.configure do |config|
   config.default_country = "de" # set to nil or false if you want to catch fails in geolocation
+  config.default_locale = "en" # country->locale conversion is minimal for now, set this explicitly to ensure GeoLocale.locale
+  config.default_lcid = "en-us"
   config.overrides["ee"] = "en" # hash used to override standard country codes
 end
 ```

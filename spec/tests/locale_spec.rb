@@ -3,6 +3,16 @@
 require 'spec_helper'
 
 describe "Locale interpret" do
+  lv_ip = LV_IPS.sample
+  lt_ip = LT_IPS.sample
+  ee_ip = EE_IPS.sample
+  ru_ip = RU_IPS.sample
+  us_ip = US_IPS.sample
+  gb_ip = GB_IPS.sample
+  ir_ip = IR_IPS.sample
+  ie_ip = IE_IPS.sample
+  pl_ip = PL_IPS.sample
+
   before :each do
     GeoLocale.config = nil
     GeoLocale.configure {}
@@ -48,17 +58,50 @@ describe "Locale interpret" do
       it "should return en if no arguments given" do
         expect( GeoLocale.locale(ip: "") ).to eq "en"
       end
-      it 'should return lv for ip: "81.198.65.13"' do
-        expect( GeoLocale.locale(ip: "81.198.65.13") ).to eq "lv"
+      it "should return lv for #{lv_ip}" do
+        expect( GeoLocale.locale(ip: lv_ip) ).to eq "lv"
       end
-      it 'should return en for ip: "97.77.25.20"' do
-        expect( GeoLocale.locale(ip: "97.77.25.20") ).to eq "en"
+      it "should return en for #{us_ip} " do
+        expect( GeoLocale.locale(ip: us_ip) ).to eq "en"
       end
-      it 'should return en-ie for ip: "54.170.245.171", lcid: true' do
-        expect( GeoLocale.locale(ip: "54.170.245.171", lcid: true) ).to eq "en-ie"
+      it "should return en-ie for #{ie_ip}, lcid: true" do
+        expect( GeoLocale.locale(ip: ie_ip, lcid: true) ).to eq "en-ie"
       end
     end
     context "with customized config" do
+      it "should return en if only default_contry configured and no arguments given" do
+        GeoLocale.config.default_country = "no"
+        expect( GeoLocale.locale(ip: "") ).to eq "en"
+      end
+      it "should return en if only default_locale configured and no arguments given" do
+        GeoLocale.config.default_locale = "no"
+        expect( GeoLocale.locale(ip: "") ).to eq "en"
+      end
+      it 'should return "no" if both defaults configured and no arguments given' do
+        GeoLocale.config.default_country = "no"
+        GeoLocale.config.default_locale = "no"
+        expect( GeoLocale.locale(ip: "") ).to eq "no"
+      end
+      it "should return lv for #{lv_ip}" do
+        GeoLocale.config.default_country = "no"
+        GeoLocale.config.default_locale = "no"
+        expect( GeoLocale.locale(ip: lv_ip) ).to eq "lv"
+      end
+      it "should return en for #{gb_ip}" do
+        GeoLocale.config.default_country = "no"
+        GeoLocale.config.default_locale = "no"
+        expect( GeoLocale.locale(ip: gb_ip) ).to eq "en"
+      end
+      it "should return en-ie for #{ie_ip}, lcid: true" do
+        GeoLocale.config.default_country = "no"
+        GeoLocale.config.default_locale = "no"
+        expect( GeoLocale.locale(ip: ie_ip, lcid: true) ).to eq "en-ie"
+      end
+      it "should return lt for #{lt_ip}, lcid: true" do
+        GeoLocale.config.default_country = "no"
+        GeoLocale.config.default_locale = "no"
+        expect( GeoLocale.locale(ip: lt_ip, lcid: true) ).to eq "lt"
+      end
     end
   end
 

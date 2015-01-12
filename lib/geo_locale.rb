@@ -16,10 +16,12 @@ module GeoLocale
   end
 
   class Config
-    attr_accessor :default_country, :overrides
+    attr_accessor :default_country, :default_locale, :default_lcid, :overrides
 
     def initialize
       @default_country = "us"
+      @default_locale = "en"
+      @default_lcid = "en-us"
       @overrides = {}
     end
   end
