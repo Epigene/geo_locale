@@ -60,7 +60,7 @@ module GeoLocale
   }
 
 
-  def self.figure_out_returnable_locale(locale:)
+  def self.figure_out_returnable_locale(locale: "")
     if locale.present?
       return locale
     else
@@ -68,7 +68,7 @@ module GeoLocale
     end
   end
 
-  def self.figure_out_returnable_lcid(lcid_string:)
+  def self.figure_out_returnable_lcid(lcid_string: "")
     if lcid_string.present?
       return lcid_string
     else
