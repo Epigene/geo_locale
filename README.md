@@ -69,6 +69,7 @@ GeoLocale.locale(ip: "97.77.25.20", country_code: "lv")
 
 1. Extend the country_code => locale hash in lib/geo_locale/locale.rb
 2. Open the hash to configuration overrides
+3. Automagically make initializer file for rails projects
 
 ## Contributing
 
