@@ -36,7 +36,7 @@ GeoLocale.configure do |config|
 end
 ```
 
-To get country code:
+### To get country code:
 
 def self.country_code (ip: "")
 
@@ -46,7 +46,7 @@ GeoLocale.country_code(ip: request.remote_ip)
 => "en"
 ```
 
-To get locale:
+### To get locale:
 
 def self.locale (ip: "", country_code: "", lcid: false)
 ```ruby
