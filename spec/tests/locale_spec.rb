@@ -35,8 +35,9 @@ describe "Locale interpret" do
     end
     context "with customized config" do
       it "should return de if no arguments given" do
-        GeoLocale.config.default_country = "de"
-        expect( GeoLocale.locale(country_code: "") ).to eq "de"
+        GeoLocale.config.default_locale = "ch"
+        puts GeoLocale.config.inspect
+        expect( GeoLocale.locale(country_code: "") ).to eq "ch"
       end
       it 'should return lv for country_code: "lv"' do
         GeoLocale.config.default_country = "de"

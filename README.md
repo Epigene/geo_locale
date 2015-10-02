@@ -1,34 +1,25 @@
 # GeoLocale
-
 Simple wrapper for GeoIP gem with some redundancy on GeoKit to get a two-letter country code or locale from an IP address.
 
-Basic use-case: Detect application user's origin and display app in that language.
+## Basic use-case
+Detect application user's origin and display app in that language.
 
 ## Requirements
-
-Ruby 2.0.0 and greater
+Ruby 2.0.0 and greater.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
 ```ruby
-gem 'geo_locale'
+# in Gemfile
+gem 'geo_locale' # and bundle
 ```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install geo_locale
 
 ## Usage
 Configure default locales
 ```ruby
 # in /config/initializers/geo_locale.rb
 GeoLocale.configure do |config|
+  config.localhost_country = "lv" # set the country to return for localhost, this country's locale and lcid will also be used for localhost 
   config.default_country = "de" # set to nil or false if you want to catch fails in geolocation
   config.default_locale = "en" # country->locale conversion is minimal for now, set this explicitly to ensure GeoLocale.locale returns useful value
   config.default_lcid = "en-us"

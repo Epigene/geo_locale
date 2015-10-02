@@ -8,6 +8,8 @@ require 'geokit-rails'
 module GeoLocale
   class << self
     attr_accessor :config
+    GeoLocale::ROOT = File.expand_path("../..", __FILE__)
+    GeoLocale::LOCALHOST_IP = "127.0.0.1"
   end
 
   def self.configure
@@ -16,7 +18,7 @@ module GeoLocale
   end
 
   class Config
-    attr_accessor :default_country, :default_locale, :default_lcid, :overrides
+    attr_accessor :localhost_country, :default_country, :default_locale, :default_lcid, :overrides
 
     def initialize
       @default_country = "us"
@@ -27,6 +29,4 @@ module GeoLocale
   end
 
   GeoLocale.configure {}
-  ROOT = File.expand_path("../..", __FILE__)
-
 end

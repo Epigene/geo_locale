@@ -1,34 +1,8 @@
 module GeoLocale
 
-  def self.locale (ip: "", country_code: "", lcid: false)
-    if country_code.present?
-      unless lcid
-        locale = GeoLocale::LOCALE[country_code]
-        return figure_out_returnable_locale(locale: locale)
-      else
-        lcid_string = GeoLocale::LCID[country_code]
-        return figure_out_returnable_lcid(lcid_string: lcid_string)
-      end
-
-    elsif ip.present?
-      country_code = GeoLocale.country_code(ip: ip)
-      unless lcid
-        locale = GeoLocale::LOCALE[country_code]
-        return figure_out_returnable_locale(locale: locale)
-      else
-        lcid_string = GeoLocale::LCID[country_code]
-        return figure_out_returnable_lcid(lcid_string: lcid_string)
-      end
-
-    else
-      unless lcid
-        locale = GeoLocale::LOCALE["#{GeoLocale.config.default_country}"]
-        return figure_out_returnable_locale(locale: locale)
-      else
-        lcid_string = GeoLocale::LCID["#{GeoLocale.config.default_country}"]
-        return figure_out_returnable_lcid(lcid_string: lcid_string)
-      end
-    end
+  def self.locale (ip: "", country_code: nil, lcid: false)
+    country_code ||= GeoLocale.country_code(ip: ip)
+    GeoLocale.get_locale_or_lcid(country_code: country_code, lcid: lcid)
   end
 
   LOCALE = {
@@ -59,21 +33,33 @@ module GeoLocale
     "fr" => "fr"
   }
 
+  private
 
-  def self.figure_out_returnable_locale(locale: "")
-    if locale.present?
-      return locale
-    else
-      return GeoLocale.config.default_locale
+    def self.get_locale_or_lcid(country_code:, lcid: false)
+      if lcid
+        lcid_string = GeoLocale::LCID[country_code]
+        return figure_out_returnable_lcid(lcid_string: lcid_string)
+      else
+        locale = GeoLocale::LOCALE[country_code]
+        return figure_out_returnable_locale(locale: locale)
+      end
     end
-  end
 
-  def self.figure_out_returnable_lcid(lcid_string: "")
-    if lcid_string.present?
-      return lcid_string
-    else
-      return GeoLocale.config.default_lcid
+
+    def self.figure_out_returnable_locale(locale: "")
+      if locale.present?
+        return locale
+      else
+        return GeoLocale.config.default_locale
+      end
     end
-  end
+
+    def self.figure_out_returnable_lcid(lcid_string: "")
+      if lcid_string.present?
+        return lcid_string
+      else
+        return GeoLocale.config.default_lcid
+      end
+    end
 
 end

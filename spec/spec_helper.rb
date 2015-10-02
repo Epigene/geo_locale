@@ -2,6 +2,7 @@ require 'bundler/setup'
 Bundler.setup
 
 require "geo_locale"
+require "pry"
 
 RSpec.configure do |config|
   LV_IPS =["81.198.65.13", "85.9.209.244", "83.241.46.175", "78.84.147.188", "159.148.168.103"]

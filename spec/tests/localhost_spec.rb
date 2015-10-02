@@ -14,7 +14,9 @@ describe "Geolocation" do
         expect(GeoLocale.country_code(ip: "127.0.0.1")).to eq "lt"
       end
       it "should return the gem default country_code if not configured" do
-        GeoLocale.config.localhost_country = nil
+        GeoLocale.config = nil
+        GeoLocale.configure {}
+        expect(GeoLocale.config.default_country).to eq "us"
         expect(GeoLocale.country_code(ip: "127.0.0.1")).to eq "us"
       end
     end
