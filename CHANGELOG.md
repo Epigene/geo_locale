@@ -8,14 +8,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [0.1.1] - 2015-10-02
 ### Added
-- Localhost (127.0.0.1) is now quick-resolved to a locale defined in configuration for faster devving
+* Localhost (127.0.0.1) is now quick-resolved to a locale defined in configuration for faster devving
 
 ## [0.1.0] - 2015-01-01  
 ### Added  
-- Initial release with basic functionality described in README  
+* Initial release with basic functionality described in README  
 ### Changed  
-- Nothing
+* Nothing
 ### Fixed
-- Nothing
+* Nothing
 ### Removed
-- Nothing
+* Nothing
