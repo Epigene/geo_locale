@@ -1,7 +1,9 @@
+require 'timeout'
+
 module GeoLocale
   IP_REGEX = /\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b/
 
-  def self.country_code(ip: "") # ip = "12.12.12.12"    
+  def self.country_code(ip: "") # ip = "12.12.12.12"
     return GeoLocale.config.localhost_country if ip == GeoLocale::LOCALHOST_IP && GeoLocale.config.localhost_country.present?
     country_code = GeoLocale.geo_ip_try(ip)
     if country_code.present?
@@ -38,12 +40,13 @@ module GeoLocale
     end
 
     def self.geokit_try(ip)
-      return nil unless ip.match(GeoLocale::IP_REGEX).present?
-      begin
-        return Geokit::Geocoders::MultiGeocoder.geocode(ip).country_code.downcase
-      rescue
-        nil
+      return nil if ip.to_s[GeoLocale::IP_REGEX].blank?
+
+      Timeout::timeout(3) do
+        return Geokit::Geocoders::MultiGeocoder.geocode(ip.to_s).country_code.downcase
       end
+    rescue
+      return nil
     end
 
 end

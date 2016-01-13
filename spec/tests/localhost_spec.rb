@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 # rspec spec/tests/localhost_spec.rb
-describe "Geolocation" do
+describe "GeoLocale" do
   before :each do
     GeoLocale.configure do |config|
       config.localhost_country = "lt"

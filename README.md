@@ -1,4 +1,4 @@
-# GeoLocale
+# GeoLocale v0.2.0
 Simple wrapper for GeoIP gem with some redundancy on GeoKit to get a two-letter country code or locale from an IP address.
 
 ## Basic use-case
@@ -19,7 +19,7 @@ Configure default locales
 ```ruby
 # in /config/initializers/geo_locale.rb
 GeoLocale.configure do |config|
-  config.localhost_country = "lv" # set the country to return for localhost, this country's locale and lcid will also be used for localhost 
+  config.localhost_country = "lv" # set the country to return for localhost, this country's locale and lcid will also be used for localhost
   config.default_country = "de" # set to nil or false if you want to catch fails in geolocation
   config.default_locale = "en" # country->locale conversion is minimal for now, set this explicitly to ensure GeoLocale.locale returns useful value
   config.default_lcid = "en-us"
@@ -28,32 +28,27 @@ end
 ```
 
 ### To get country code:
-
-def self.country_code (ip: "")
-
-Use in controller like so:
 ```ruby
 GeoLocale.country_code(ip: request.remote_ip)
-=> "en"
+# => "en"
 ```
 
 ### To get locale:
-
-def self.locale (ip: "", country_code: "", lcid: false)
 ```ruby
 GeoLocale.locale(country_code: "gb")
-=> "en"
+#=> "en"
 GeoLocale.locale(country_code: "gb", lcid: true)
-=> "en-gb"
+#=> "en-gb"
 GeoLocale.locale(ip: "97.77.25.20")
-=> "en"
+#=> "en"
 GeoLocale.locale(ip: "97.77.25.20", lcid: true)
-=> "en-us"
+#=> "en-us"
 ```
+
 country_code is prioritized as it does not require external calls.
 ```ruby
 GeoLocale.locale(ip: "97.77.25.20", country_code: "lv")
-=> "lv"
+#=> "lv"
 ```
 
 ## TO-DO

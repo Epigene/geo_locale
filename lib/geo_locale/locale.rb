@@ -5,6 +5,8 @@ module GeoLocale
     GeoLocale.get_locale_or_lcid(country_code: country_code, lcid: lcid)
   end
 
+  # consult http://www.science.co.il/Language/Locale-codes.asp
+
   LOCALE = {
     "lv" => "lv",
     "lt" => "lt",
@@ -16,7 +18,16 @@ module GeoLocale
     "us" => "en", # US&A
     "pl" => "pl",
     "de" => "de",
-    "fr" => "fr"
+    "fr" => "fr",
+    "sk" => "sk",
+    "ua" => "uk",
+    "br" => "pt",
+    "fi" => "fi",
+    "dk" => "da",
+    "az" => "az",
+    "ge" => "ka",
+    "ro" => "ro",
+    "md" => "ro"
   }
 
   LCID = {
@@ -30,12 +41,21 @@ module GeoLocale
     "us" => "en-us", # US&A
     "pl" => "pl",
     "de" => "de",
-    "fr" => "fr"
+    "fr" => "fr",
+    "sk" => "sk",
+    "ua" => "uk",
+    "br" => "pt-br",
+    "fi" => "fi",
+    "dk" => "da",
+    "az" => "az-az",
+    "ge" => "ka",
+    "ro" => "ro",
+    "md" => "ro-mo"
   }
 
   private
 
-    def self.get_locale_or_lcid(country_code:, lcid: false)
+    def self.get_locale_or_lcid(country_code: nil, lcid: false)
       if lcid
         lcid_string = GeoLocale::LCID[country_code]
         return figure_out_returnable_lcid(lcid_string: lcid_string)
