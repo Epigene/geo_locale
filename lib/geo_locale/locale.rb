@@ -1,7 +1,7 @@
 module GeoLocale
 
-  def self.locale (ip: "", country_code: nil, lcid: false)
-    country_code ||= GeoLocale.country_code(ip: ip)
+  def self.locale (ip: "", country_code: nil, lcid: false, request_headers: {})
+    country_code ||= GeoLocale.country_code(ip: ip, request_headers: request_headers)
     GeoLocale.get_locale_or_lcid(country_code: country_code, lcid: lcid)
   end
 

@@ -1,5 +1,5 @@
-# GeoLocale v0.2.0
-Simple wrapper for GeoIP gem with some redundancy on GeoKit to get a two-letter country code or locale from an IP address.
+# GeoLocale v0.9.5
+Simple wrapper for GeoIP gem with some redundancy on GeoKit to get a two-letter country code or locale from an IP and, (optionally) request headers if a service like cloudflare is used.
 
 ## Basic use-case
 Detect application user's origin and display app in that language.
@@ -11,7 +11,7 @@ Ruby 2.0.0 and greater.
 
 ```ruby
 # in Gemfile
-gem 'geo_locale' # and bundle
+gem 'geo_locale', '~> 0.9.5' # and bundle
 ```
 
 ## Usage
@@ -29,13 +29,13 @@ end
 
 ### To get country code:
 ```ruby
-GeoLocale.country_code(ip: request.remote_ip)
+GeoLocale.country_code(ip: request.remote_ip, request_headers: request.headers)
 # => "en"
 ```
 
 ### To get locale:
 ```ruby
-GeoLocale.locale(country_code: "gb")
+GeoLocale.locale(country_code: "gb", request_headers: request.headers)
 #=> "en"
 GeoLocale.locale(country_code: "gb", lcid: true)
 #=> "en-gb"

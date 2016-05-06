@@ -2,9 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Release candidate][ - - ]
-### Changed
--
+## [0.9.5] - 2016-05-06
+### Updated
+* API (can pass request_headers hash in addition to IP)
+### Added
+* Cloudflare support
 
 ## [0.2.0] - 2016-01-13
 ### Added
