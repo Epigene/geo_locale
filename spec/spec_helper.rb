@@ -14,4 +14,61 @@ RSpec.configure do |config|
   IR_IPS =["77.104.75.76", "94.74.132.65"]
   IE_IPS =["54.170.245.171", "54.171.4.57", "176.34.86.253"]
   PL_IPS =["83.3.115.58", "109.207.54.81", "88.199.29.50"]
+
+  XX_CLOUDFLARE_REQUEST_HEADERS = {
+    "rack.version"=>[1, 3],
+    "rack.errors"=>"",
+    "rack.multithread"=>false,
+    "rack.multiprocess"=>false,
+    "rack.run_once"=>false,
+    "SCRIPT_NAME"=>"",
+    "QUERY_STRING"=>"pp=flamegraph",
+    "SERVER_PROTOCOL"=>"HTTP/1.1",
+    "SERVER_SOFTWARE"=>"2.13.4",
+    "GATEWAY_INTERFACE"=>"CGI/1.2",
+    "REQUEST_METHOD"=>"GET",
+    "REQUEST_PATH"=>"/lv/lv/p/k2/landing",
+    "REQUEST_URI"=>"/lv/lv/p/k2/landing?pp=flamegraph",
+    "HTTP_VERSION"=>"HTTP/1.1",
+    "HTTP_HOST"=>"localhost:3000",
+    "HTTP_USER_AGENT"=> "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:43.0) Gecko/20100101 Firefox/43.0",
+    "HTTP_ACCEPT"=> "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "HTTP_ACCEPT_LANGUAGE"=>"en-US,en;q=0.5",
+    "HTTP_ACCEPT_ENCODING"=>"gzip, deflate",
+    "HTTP_CONNECTION"=>"keep-alive",
+    "HTTP_CACHE_CONTROL"=>"max-age=0",
+    "SERVER_NAME"=>"localhost",
+    "SERVER_PORT"=>"3000",
+    "PATH_INFO"=>"/lv/lv/p/k2/landing",
+    "REMOTE_ADDR"=>"::1",
+    "puma.socket"=>"",
+    "rack.hijack?"=>true,
+    "rack.hijack"=>"",
+    "rack.input"=>"",
+    "rack.url_scheme"=>"http",
+    "rack.after_reply"=>[],
+    "ORIGINAL_FULLPATH"=>"/lv/lv/p/k2/landing?pp=flamegraph",
+    "ORIGINAL_SCRIPT_NAME"=>"",
+    "HTTP_CF_IPCOUNTRY"=>"XX"
+  }
+
+  LV_CLOUDFLARE_REQUEST_HEADERS = XX_CLOUDFLARE_REQUEST_HEADERS.clone
+  LT_CLOUDFLARE_REQUEST_HEADERS = XX_CLOUDFLARE_REQUEST_HEADERS.clone
+  EE_CLOUDFLARE_REQUEST_HEADERS = XX_CLOUDFLARE_REQUEST_HEADERS.clone
+  RU_CLOUDFLARE_REQUEST_HEADERS = XX_CLOUDFLARE_REQUEST_HEADERS.clone
+  US_CLOUDFLARE_REQUEST_HEADERS = XX_CLOUDFLARE_REQUEST_HEADERS.clone
+  GB_CLOUDFLARE_REQUEST_HEADERS = XX_CLOUDFLARE_REQUEST_HEADERS.clone
+  IR_CLOUDFLARE_REQUEST_HEADERS = XX_CLOUDFLARE_REQUEST_HEADERS.clone
+  IE_CLOUDFLARE_REQUEST_HEADERS = XX_CLOUDFLARE_REQUEST_HEADERS.clone
+  PL_CLOUDFLARE_REQUEST_HEADERS = XX_CLOUDFLARE_REQUEST_HEADERS.clone
+
+  LV_CLOUDFLARE_REQUEST_HEADERS["HTTP_CF_IPCOUNTRY"] = "LV"
+  LT_CLOUDFLARE_REQUEST_HEADERS["HTTP_CF_IPCOUNTRY"] = "LT"
+  EE_CLOUDFLARE_REQUEST_HEADERS["HTTP_CF_IPCOUNTRY"] = "EE"
+  RU_CLOUDFLARE_REQUEST_HEADERS["HTTP_CF_IPCOUNTRY"] = "RU"
+  US_CLOUDFLARE_REQUEST_HEADERS["HTTP_CF_IPCOUNTRY"] = "US"
+  GB_CLOUDFLARE_REQUEST_HEADERS["HTTP_CF_IPCOUNTRY"] = "GB"
+  IR_CLOUDFLARE_REQUEST_HEADERS["HTTP_CF_IPCOUNTRY"] = "IR"
+  IE_CLOUDFLARE_REQUEST_HEADERS["HTTP_CF_IPCOUNTRY"] = "IE"
+  PL_CLOUDFLARE_REQUEST_HEADERS["HTTP_CF_IPCOUNTRY"] = "PL"
 end

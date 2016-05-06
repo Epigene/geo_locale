@@ -19,6 +19,57 @@ describe "GeoLocale" do
     GeoLocale.configure {}
   end
 
+  describe ".country_code(ip: "", request_headers: {})" do
+    before :all do
+      @ip = "0.0.0.0"
+    end
+
+    context "when HTTP_CF_IPCOUNTRY is " do
+
+      it "LV should return lv" do
+        expect(GeoLocale.country_code(ip: @ip, request_headers: LV_CLOUDFLARE_REQUEST_HEADERS)).to eq "lv"
+      end
+
+      it "LT should return lt" do
+        expect(GeoLocale.country_code(ip: @ip, request_headers: LT_CLOUDFLARE_REQUEST_HEADERS)).to eq "lt"
+      end
+
+      it "EE should return ee" do
+        expect(GeoLocale.country_code(ip: @ip, request_headers: EE_CLOUDFLARE_REQUEST_HEADERS)).to eq "ee"
+      end
+
+      it "RU should return ru" do
+        expect(GeoLocale.country_code(ip: @ip, request_headers: RU_CLOUDFLARE_REQUEST_HEADERS)).to eq "ru"
+      end
+
+      it "US should return us" do
+        expect(GeoLocale.country_code(ip: @ip, request_headers: US_CLOUDFLARE_REQUEST_HEADERS)).to eq "us"
+      end
+
+      it "GB should return gb" do
+        expect(GeoLocale.country_code(ip: @ip, request_headers: GB_CLOUDFLARE_REQUEST_HEADERS)).to eq "gb"
+      end
+
+      it "IR should return ir" do
+        expect(GeoLocale.country_code(ip: @ip, request_headers: IR_CLOUDFLARE_REQUEST_HEADERS)).to eq "ir"
+      end
+
+      it "IE should return ie" do
+        expect(GeoLocale.country_code(ip: @ip, request_headers: IE_CLOUDFLARE_REQUEST_HEADERS)).to eq "ie"
+      end
+
+      it "PL should return pl" do
+        expect(GeoLocale.country_code(ip: @ip, request_headers: PL_CLOUDFLARE_REQUEST_HEADERS)).to eq "pl"
+      end
+
+      it "XX should return fallback to default_country" do
+        expect(GeoLocale.country_code(ip: @ip, request_headers: XX_CLOUDFLARE_REQUEST_HEADERS)).to eq "us"
+      end
+
+    end
+
+  end
+
   describe ".country_code(ip: "")" do
     it "should return lv for #{lv_ip}" do
       expect(GeoLocale.country_code(ip: lv_ip)).to eq "lv"
